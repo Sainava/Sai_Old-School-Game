@@ -1,0 +1,20 @@
+<svg width="100" height="88" viewBox="0 0 100 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="50" cy="44" r="40" fill="#2D3748" stroke="#4A5568" stroke-width="2"/>
+  
+  <!-- 4 colored segments -->
+  <!-- Red (top-left) -->
+  <path d="M 50 44 L 50 4 A 40 40 0 0 0 21.7 21.7 Z" fill="#FF3737"/>
+  
+  <!-- Green (top-right) -->
+  <path d="M 50 44 L 78.3 21.7 A 40 40 0 0 0 50 4 Z" fill="#22C55E"/>
+  
+  <!-- Blue (bottom-right) -->
+  <path d="M 50 44 L 50 84 A 40 40 0 0 0 78.3 66.3 Z" fill="#3B82F6"/>
+  
+  <!-- Yellow (bottom-left) -->
+  <path d="M 50 44 L 21.7 66.3 A 40 40 0 0 0 50 84 Z" fill="#FBBF24"/>
+  
+  <!-- Center circle -->
+  <circle cx="50" cy="44" r="8" fill="#1A202C"/>
+</svg>

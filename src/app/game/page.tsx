@@ -5,6 +5,7 @@ import TicTacToeImage from '/public/tic-tac-toe.svg'
 import SudokuImage from '/public/SudokuLogo.webp'
 import SchulteImage from '/public/SchulteImage.webp'
 import MemoryFlip from '/public/MemoryFlip.png'
+import SimonImage from '/public/simon-icon.svg'
 const SelectGame = () => {
   return (
     <>
@@ -42,6 +43,13 @@ const SelectGame = () => {
           name={'Memory Flip Card'}
           link={'memory-flip-card'}
           backgroundColor={'#760172'}
+          textColor={'white'}
+        />
+        <Card
+          image={SimonImage}
+          name={'Simon Says'}
+          link={'simon'}
+          backgroundColor={'#8B5CF6'}
           textColor={'white'}
         />
       </div>

@@ -1,0 +1,357 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  position: relative;
+  color: #333;
+}
+
+#bgGrid {
+  position: fixed;
+  will-change: transform;
+  background-size: 2.5rem 2.5rem;
+  background-image: linear-gradient(90deg,rgba(0,0,0,.133) 1px,transparent 0),linear-gradient(180deg,rgba(5,5,5,.133) 1px,transparent 0);
+  z-index: -2;
+  inset: 0;
+  height: 100vh;
+}
+
+#blurGrid {
+  position: absolute;
+  inset: 0;
+  height: 100vh;
+  background: radial-gradient(circle,hsla(0,8%,95%,.6) 0,hsla(0,11%,96%,.97) 90%,var(--background) 100%);
+  z-index: -1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.scoreBoard {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--black);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+  color: var(--light-red);
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.menu {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.difficultySelector h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.difficultyButton {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 2px solid #ddd;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.difficultyButton:hover {
+  border-color: #3B82F6;
+  transform: translateY(-2px);
+}
+
+.difficultyButton.selected {
+  border-color: #3B82F6;
+  background: #3B82F6;
+  color: white;
+}
+
+.controls {
+  margin-top: 2rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+.startButton {
+  background: #22C55E;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.startButton:hover {
+  background: #16A34A;
+  transform: translateY(-2px);
+}
+
+.status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+  min-height: 2rem;
+  text-align: center;
+}
+
+.gameBoard {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+/* 4 Button Grid (2x2) */
+.grid4 {
+  grid-template-columns: repeat(2, 120px);
+  grid-template-rows: repeat(2, 120px);
+}
+
+/* 7 Button Grid (hexagonal-ish) */
+.grid7 {
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+
+.grid7 .gameButton:nth-child(1) { grid-area: 1 / 2; }
+.grid7 .gameButton:nth-child(2) { grid-area: 2 / 1; }
+.grid7 .gameButton:nth-child(3) { grid-area: 2 / 2; }
+.grid7 .gameButton:nth-child(4) { grid-area: 2 / 3; }
+.grid7 .gameButton:nth-child(5) { grid-area: 3 / 1; }
+.grid7 .gameButton:nth-child(6) { grid-area: 3 / 2; }
+.grid7 .gameButton:nth-child(7) { grid-area: 3 / 3; }
+
+/* 10 Button Grid (2x5) */
+.grid10 {
+  grid-template-columns: repeat(5, 80px);
+  grid-template-rows: repeat(2, 80px);
+}
+
+.gameButton {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gameButton:hover:not(:disabled) {
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.gameButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.gameButton:disabled {
+  cursor: not-allowed;
+}
+
+.gameButton.active {
+  transform: scale(1.1);
+  border-color: white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: flash 0.1s ease;
+}
+
+@keyframes flash {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.gameControls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.resetButton {
+  background: #F97316;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  background: #EA580C;
+  transform: translateY(-2px);
+}
+
+.menuButton {
+  background: #6B7280;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menuButton:hover {
+  background: #4B5563;
+  transform: translateY(-2px);
+}
+
+.instructions {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.instructions h4 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.instructions p {
+  margin-bottom: 0.5rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 600px) {
+  #bgGrid {
+    background-size: 1.5rem 1.5rem;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .scoreBoard {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .menu {
+    padding: 1.5rem;
+  }
+  
+  /* Smaller buttons on mobile */
+  .grid4 {
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(2, 100px);
+  }
+  
+  .grid7 {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+  
+  .grid10 {
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(2, 60px);
+  }
+  
+  .gameButton {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  /* Even smaller for very small screens */
+  .grid4 {
+    grid-template-columns: repeat(2, 80px);
+    grid-template-rows: repeat(2, 80px);
+  }
+  
+  .grid7 {
+    grid-template-columns: repeat(3, 65px);
+    grid-template-rows: repeat(3, 65px);
+  }
+  
+  .grid10 {
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(2, 50px);
+  }
+  
+  .gameButton {
+    font-size: 1rem;
+  }
+  
+  .instructions {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
